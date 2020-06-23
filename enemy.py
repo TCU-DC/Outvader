@@ -12,5 +12,5 @@ class Enemy:
         self.x += x
         self.y += y
 
-    def draw(self, size, kind):
+    def draw(self, size):
         pyxel.blt(self.x, self.y, 1, size*self.kind, 0, size, size, 0)

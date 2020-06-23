@@ -1,5 +1,6 @@
 import pyxel
 from player import Player
+from enemyCrowd import EnemyCrowd
 
 width = 128
 height = 128
@@ -9,15 +10,18 @@ pyxel.init(width, height, caption="invader", scale=4,
 pyxel.load("my_resource.pyxres")
 
 player = Player(width, height)
+enemyCrowd = EnemyCrowd()
 
 
 def update():
     player.update(width, height)
+    enemyCrowd.update(width, 5)
 
 
 def draw():
     pyxel.cls(0)
     player.draw()
+    enemyCrowd.draw()
 
 
 pyxel.run(update, draw)
