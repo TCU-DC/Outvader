@@ -14,3 +14,6 @@ class Enemy:
 
     def draw(self, size):
         pyxel.blt(self.x, self.y, 1, size*self.kind, 0, size, size, 0)
+
+    def getPos(self):
+        return {"x": self.x, "y": self.y}
