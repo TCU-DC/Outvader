@@ -9,7 +9,7 @@ class Player:
         @param x&y 初期座標
         '''
         self.size = 16
-        self.x = panelw / 2
+        self.x = (panelw - self.size) / 2
         self.y = panelh - self.size - 5
 
     def update(self, panelw, panelh):
@@ -25,8 +25,8 @@ class Player:
         # 壁で止まる
         if self.x < 0:
             self.x = 0
-        elif self.x > panelw-16:
-            self.x = panelw-16
+        elif self.x > panelw-self.size:
+            self.x = panelw-self.size
 
     def draw(self):
         '''
