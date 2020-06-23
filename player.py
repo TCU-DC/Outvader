@@ -17,16 +17,16 @@ class Player:
         移動を制御する
         '''
         # キーボード操作による移動
-        if pyxel.btnp(pyxel.KEY_RIGHT):
-            self.x += 1
-        elif pyxel.btnp(pyxel.KEY_LEFT):
-            self.x -= 1
+        if pyxel.btn(pyxel.KEY_RIGHT):
+            self.x += 3
+        elif pyxel.btn(pyxel.KEY_LEFT):
+            self.x -= 3
 
         # 壁で止まる
-        # if self.x < 0:
-        #     self.x = 0
-        # elif self.x > panelw:
-        #     self.x = panelw
+        if self.x < 0:
+            self.x = 0
+        elif self.x > panelw-16:
+            self.x = panelw-16
 
     def draw(self):
         '''

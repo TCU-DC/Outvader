@@ -3,8 +3,8 @@ from player import Player
 
 width = 128
 height = 128
-
-pyxel.init(width, height, caption="invader", scale=4, fps=5)
+#init(width, height, [caption], [scale], [palette], [fps], [quit_key], [fullscreen])
+pyxel.init(width, height, caption="invader", scale=4, fps=30)
 pyxel.load("my_resource.pyxres")
 
 player = Player(width, height)
