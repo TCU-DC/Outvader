@@ -33,4 +33,3 @@ class Player:
         プレイヤーの描画を行う
         '''
         pyxel.blt(self.x, self.y, 1, 16*3, 0, 16, 16, 0)
-        # pyxel.blt(0, 60, 1, 0, 0, 16, 16, 0)
