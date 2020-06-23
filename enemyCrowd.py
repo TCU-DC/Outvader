@@ -1,5 +1,7 @@
+import random
 import pyxel
 from enemy import Enemy
+from shotBallet import ShotBallet
 
 
 ENEMY_CROWD_START_X = 0
@@ -18,12 +20,13 @@ class EnemyCrowd:
         self.my = -5  # 敵一体のy方向移動量
         self.dir = 1  # 敵軍の移動向き
         self.singleSize = 16  # 敵一体のサイズ
+        self.shotBallet = ShotBallet(5, 20, 5)
 
         # 敵軍の配列初期化
         self.enemyList = [[Enemy((self.singleSize + 5)*i + ENEMY_CROWD_START_X, j * (self.singleSize + 5) +
-                                 ENEMY_CROWD_START_Y, (i * ENEMY_Y_MAX + j) % 3) for i in range(ENEMY_X_MAX)] for j in range(ENEMY_Y_MAX)]
+                                 ENEMY_CROWD_START_Y, (i * ENEMY_X_MAX + j) % 3) for i in range(ENEMY_X_MAX)] for j in range(ENEMY_Y_MAX)]
 
-    def update(self, panelw, mt):
+    def update(self, panelw, panelh, mt):
         '''
         移動
         panelw: 画面幅
@@ -47,7 +50,22 @@ class EnemyCrowd:
                         self.enemyList[enemyi][enemyj].update(
                             self.mx * self.dir, 0)
 
+        # タイミングが来たらショットを実行
+        if pyxel.frame_count % 20 == 0:
+            rpos = self.enemyList[random.randrange(
+                ENEMY_Y_MAX)][random.randrange(ENEMY_X_MAX)].getPos()
+
+            self.shotBallet.init(
+                rpos["x"] + self.singleSize/2, rpos["y"]+self.singleSize)
+
+        self.shotBallet.update(panelh)
+
     def draw(self):
+        '''
+        描画
+        '''
         for enemyi in range(ENEMY_Y_MAX):
             for enemyj in range(ENEMY_X_MAX):
                 self.enemyList[enemyi][enemyj].draw(self.singleSize)
+
+        self.shotBallet.draw()
