@@ -3,14 +3,14 @@ import pyxel
 
 class Enemy:
 
-    def __init__(self, x, y):
+    def __init__(self, x, y, kind):
         self.x = x
         self.y = y
-        self.size = 16
+        self.kind = kind
 
     def update(self, x, y):
         self.x += x
         self.y += y
 
-    def draw(self, kind):
-        pyxel.blt(self.x, self.y, 1, 16*kind, 0, 16, 16, 0)
+    def draw(self, size, kind):
+        pyxel.blt(self.x, self.y, 1, size*self.kind, 0, size, size, 0)
