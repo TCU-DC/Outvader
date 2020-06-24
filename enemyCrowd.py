@@ -60,6 +60,11 @@ class EnemyCrowd:
 
         self.shotBallet.update(panelh)
 
+    def isHitJudgeShot(self, playerx, playery, playersize):
+        if self.shotBallet.isHitShot(playerx + playersize/2, playery + playersize/2, playersize, playersize):
+
+            return True
+
     def draw(self):
         '''
         描画

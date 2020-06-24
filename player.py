@@ -6,8 +6,7 @@ class Player:
 
     def __init__(self, panelw, panelh):
         '''
-        プレイヤーの初期化
-        @param x&y 初期座標
+        初期化
         '''
         self.size = 16
         self.x = (panelw - self.size) / 2
@@ -16,7 +15,7 @@ class Player:
 
     def update(self, panelw, panelh):
         '''
-        移動を制御する
+        移動
         '''
         # キーボード操作による移動
         if pyxel.btn(pyxel.KEY_RIGHT):
@@ -36,7 +35,7 @@ class Player:
 
     def draw(self):
         '''
-        プレイヤーの描画を行う
+        描画
         '''
         pyxel.blt(self.x, self.y, 1, 16*3, 0, 16, 16, 0)
         self.shotBallet.draw()

@@ -29,6 +29,15 @@ class ShotBallet:
             self.cooltime = 0
             self.shotList[freei].init(x, y)
 
+    def isHitShot(self, dx, dy, rangew, rangeh):
+        '''
+        生存している全弾の当たり判定
+        '''
+        for shotSingle in self.shotList:
+            if shotSingle.isJudgeAlive():
+                if shotSingle.isJudgeHit(dx, dy, rangew, rangeh):
+                    return True  # あたっていればTrue
+
     def update(self, panelh):
         '''
         動作
