@@ -21,6 +21,7 @@ class Shot:
         # (弾のサイズとオブジェクトのサイズ)の2乗以内ならHIT
         if (dx - self.x)**2 + (dy - self.y)**2 \
                 <= (rangew/2 + self.size/2) ** 2 + (rangeh/2 + self.size/2) ** 2:
+            self.isAlive = False
             return True
 
         return False
